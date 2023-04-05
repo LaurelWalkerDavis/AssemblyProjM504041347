@@ -110,7 +110,7 @@ PinOff:
 	ldrh	r3,[r2,#ODR]		// read current ODR value
 	bic		r3,r1				// clear bit for PBx
 	strh	r3,[r2,#ODR]		// write new ODR value
-	push	{r0-r3, lr}
+	pop		{r0-r3, lr}
 	bx		lr					// return
 
 

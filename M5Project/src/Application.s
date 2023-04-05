@@ -58,7 +58,7 @@ main:
 		str		r9, [r8]
 		//initialize Cycle counts
 		ldr		r9, =Cycle
-		mov		r10, #0
+		mov		r10, #0			//cycle tracker
 		str		r10, [r9]
 
 		// ~ WAIT ~ 1

@@ -39,7 +39,8 @@
 
 Delay:
 		push	{r0, r1, lr}
-		ldr		r0, =0x7A1200		//equivalent to 5000000
+		//ldr		r0, =0x7A1200		//equivalent to 5000000
+		ldr		r0, =0x2625A0			//equivalent to 2500000
 delay_loop:
 		subs	r0, r0, #1
 		bne		delay_loop
@@ -56,35 +57,28 @@ delay_loop:
 
 DisplayCount:
 	push 	{r0-r3, r8, lr}
-	//mov		r11, r0
-//____ready?
-	//bl		CheckButton		//r0 = 1 or 0 to see whether button is pressed
-	//cmp		r0, #1			//pressed?
-	//bne		DisplayCount	//if not, repeat
-	//sub		r0, #1			//restore to original r0 (CheckButton turns it to a 1. Must go back to 0 to start counting from 0.)
-
-
 
 BeginCount:
-//____i/o operation
-	mov		r0, #0
+	mov		r0, #0			//initialize BeginCount loop counter
+//____wait
 	bl		CheckButton
-	cmp		r0, #1
-	bne		exit
+	cmp		r0, #1			//pressed?
+	bne		exit			//if not, exit to App line 86
+//____i/o operation
 	pop		{r0}			//pops 16 on 16th loop
-	bl		ShowNumber
-	bl		Delay
-	bl		LEDsOff
-	bl		Delay
-	add		r0, #1			//increment counter
-	push	{r0}
+	bl		ShowNumber		//show loop count in binary
+	bl		Delay			//delay 1/2 second
+	bl		LEDsOff			//turn all lights off
+	bl		Delay			//for 1/2 second
+	add		r0, #1			//increment BeginCount loop counter
+	push	{r0}			//push BeginCount loop counter onto stack to preserve for after CheckButton
 	cmp		r0, #15			//compare counter to 15
 	ble		BeginCount		//if =< 15, repeat loop
 else:
-	pop		{r0}
-	mov		r0, #0			//if counter > 15, reset to 0 and start BeginCount again
-	push	{r0}
-	b		BeginCount
+	pop		{r0}			//get BeginCount loop count
+	mov		r0, #0			//if counter > 15, reset to 0
+	push	{r0}			//push 0 back onto stack to start again from 0
+	b		BeginCount		//start BeginCount again
 exit:						//can only exit when button is no longer pressed
 	pop		{r0-r3, r8, lr}
 	bx		lr

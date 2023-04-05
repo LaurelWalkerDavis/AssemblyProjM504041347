@@ -274,7 +274,7 @@ LOAD /Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.e
                 0x00000000080002e6                LED_OffOn
                 0x000000000800030a                PinOn
                 0x0000000008000328                PinOff
-                0x0000000008000344                LEDsOff
+                0x0000000008000346                LEDsOff
  .text.MidFunctions
                 0x0000000008000360      0x130 src/MidFunctions.o
                 0x0000000008000360                Delay
@@ -541,12 +541,12 @@ LOAD /Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.e
                 0x0000000000000277       0x22 /Applications/Ac6/SystemWorkbench.app/Contents/Eclipse/plugins/fr.ac6.mcu.externaltools.arm-none.macos64_1.17.0.201812190825/tools/compiler/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/crtn.o
 OUTPUT(M5Project.elf elf32-littlearm)
 
-.debug_line     0x0000000000000000      0x26c
+.debug_line     0x0000000000000000      0x26a
  .debug_line    0x0000000000000000       0x63 src/Application.o
  .debug_line    0x0000000000000063       0x57 src/ButtonDrivers.o
  .debug_line    0x00000000000000ba       0x84 src/LEDDrivers.o
- .debug_line    0x000000000000013e       0xb2 src/MidFunctions.o
- .debug_line    0x00000000000001f0       0x7c startup/startup_stm32.o
+ .debug_line    0x000000000000013e       0xb0 src/MidFunctions.o
+ .debug_line    0x00000000000001ee       0x7c startup/startup_stm32.o
 
 .debug_info     0x0000000000000000       0xba
  .debug_info    0x0000000000000000       0x26 src/Application.o
