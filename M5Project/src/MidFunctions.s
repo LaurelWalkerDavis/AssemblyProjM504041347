@@ -23,19 +23,10 @@
 //	____Delay____
 //	Perform a one-half second delay by executing a “do-nothing” for loop some number of iterations.
 //	The number of iterations will need to be determined experimentally.
-// 	(	Inputs: r0 = # half seconds
+// 	(	Inputs:
 // 	(	Output: none
 // 	(	Alters: r0, r1
 
-//Delay:	push	{r0, r1, lr}
-		//ldr		r1, =0x20000000			//delay count for 1/2 sec
-		//mov		r1, #3			//delay count for 1/2 sec
-//Dloop1:	subs	r1, #1					//decrement delay count
-		//bne		Dloop1					//repeat
-		//subs	r0, #1					//# half seconds
-		//bne		Delay					//repeat for each half second
-		//pop		{r0, r1, lr}
-		//bx		lr						//return to caller
 
 Delay:
 		push	{r0, r1, lr}
